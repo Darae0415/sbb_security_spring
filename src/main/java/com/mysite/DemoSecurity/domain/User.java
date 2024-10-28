@@ -1,8 +1,10 @@
 package com.mysite.DemoSecurity.domain;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Data
+@ToString
 //	Data : Getter, Setter, ToString, EqualsAndHashCode, RequiredArgsConstructor:final, NonNull를 포함하고 있음
 //	@Getter: 모든 필드에 대한 getter 메서드를 생성
 //	@Setter: 모든 필드에 대한 setter 메서드를 생성

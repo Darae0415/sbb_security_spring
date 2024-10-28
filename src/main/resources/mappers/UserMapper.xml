@@ -5,4 +5,7 @@
         INSERT INTO ttusers (username, password, enabled, role)
         VALUES (#{username}, #{password}, #{enabled}, #{role})
     </insert>
+    <select id="findByUsername" resultType="com.mysite.DemoSecurity.domain.User">
+    	SELECT * FROM ttusers WHERE username = #{username}
+    </select>
 </mapper>

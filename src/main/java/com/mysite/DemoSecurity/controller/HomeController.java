@@ -3,6 +3,7 @@ package com.mysite.DemoSecurity.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -23,9 +24,35 @@ public class HomeController {
 	}
 	
 	@GetMapping("/login")
-	public String login() {
+	public String loginpage() {
 		return "login";
 	}
-	
-	
+	@PostMapping("/login")
+	public void login(@RequestParam("username") String username, @RequestParam("password") String password) {
+		log.info(username);
+		
+		User member = userMapper.findByUsername(username);
+		if(password.equals(member.getPassword())) {
+			log.info("회원");
+		}else {
+			log.info("비회원");
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+	}
 }
