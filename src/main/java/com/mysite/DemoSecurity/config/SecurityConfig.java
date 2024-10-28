@@ -27,10 +27,13 @@ public class SecurityConfig {
                 .permitAll()
                 )
        		.authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/", "/home").permitAll()
+                .requestMatchers("/", "/home","/signup").permitAll()
                 .anyRequest().authenticated()
-                );
-
+                )
+       		.logout(logout -> logout
+            		.logoutSuccessUrl("/")
+            		.permitAll()
+            		);
         return http.build();
     }
 
