@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
 xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-	<title>Home</title>
+	<title>사용자 목록</title>
 </head>
 <body>
 <nav>
@@ -24,16 +24,28 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
         </li>
     </ul>
 </nav>
-<h1>Welcome to Demo Site</h1>
-<div sec:authorize="!isAuthenticated()">
-	<a th:href="@{/login}">Login</a>
-</div>
-
-<div sec:authorize="isAuthenticated()">
-	<p>Welcome, <span sec:authentication="name"></span>!</p>
-	<form th:action="@{/logout}" method="post">
-		<input type="submit" value="Logout">
-	</form>
-</div>
+<h1>User List</h1>
+<table>
+	<thead>
+		<tr>
+		<th>ID</th>
+		<th>사용자명</th>
+		<th>권한</th>
+		<th>상태</th>
+		<th>관리</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr th:each="user: ${users}">
+			<td th:text="${user.id}"></td>
+			<td th:text="${user.username}"></td>
+			<td>
+				<span  th:each="role: ${user.roles}" th:text="${role.name + ' '}"></span>
+			</td>
+			<td th:text="${user.enabled}"></td>
+			<td>권한관리 버튼</td>
+		</tr>
+	</tbody>
+</table>
 </body>
 </html>

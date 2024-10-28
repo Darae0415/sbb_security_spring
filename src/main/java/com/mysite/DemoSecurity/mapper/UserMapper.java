@@ -1,5 +1,7 @@
 package com.mysite.DemoSecurity.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,6 +14,8 @@ public interface UserMapper {
 	User findByUsername(String username);
 
 	void insertUserRole(@Param("userId") Long userId, @Param("roleId") Long roleId);
+
+	List<User> findAll();
 	
 	
 }
