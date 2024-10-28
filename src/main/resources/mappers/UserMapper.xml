@@ -46,4 +46,19 @@
                  LEFT JOIN ttuser_roles ur ON u.id = ur.user_id
                  LEFT JOIN roles2 r ON ur.role_id = r.id
     </select>
+    
+    <select id="findRolesByUserId" resultType="com.mysite.DemoSecurity.domain.Role">
+        SELECT r.id, r.name
+        FROM roles2 r
+                 JOIN ttuser_roles ur ON r.id = ur.role_id
+        WHERE ur.user_id = #{userId}
+    </select>
+    
+    <select id="findById" resultType="com.mysite.DemoSecurity.domain.User">
+        SELECT * FROM ttusers WHERE id = #{id}
+    </select>
+    
+    <select id="getAllRoles" resultType="com.mysite.DemoSecurity.domain.Role">
+        SELECT * FROM roles2 ORDER BY name
+    </select>
 </mapper>
