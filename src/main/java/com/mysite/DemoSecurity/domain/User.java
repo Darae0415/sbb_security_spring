@@ -1,5 +1,7 @@
 package com.mysite.DemoSecurity.domain;
 
+import java.util.List;
+
 import lombok.Data;
 import lombok.ToString;
 
@@ -16,6 +18,7 @@ public class User {
 	private String username;
 	private String password;
 	private boolean enabled;
-	private String role;
+//	private String role;
+	private List<Role> roles;
 
 }
